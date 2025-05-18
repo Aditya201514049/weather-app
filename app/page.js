@@ -12,7 +12,7 @@ export default function Home() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [city, setCity] = useState('London'); // Default city
+  const [city, setCity] = useState('Dhaka'); // Default city
 
   const handleSearch = async (searchCity) => {
     setCity(searchCity);
