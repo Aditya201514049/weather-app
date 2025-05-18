@@ -1,0 +1,60 @@
+export const popularCities = [
+  "Dhaka",
+  "London",
+  "New York",
+  "Tokyo",
+  "Paris",
+  "Berlin",
+  "Rome",
+  "Madrid",
+  "Moscow",
+  "Beijing",
+  "Sydney",
+  "Mumbai",
+  "Dubai",
+  "Singapore",
+  "Bangkok",
+  "Cairo",
+  "Los Angeles",
+  "Toronto",
+  "Mexico City",
+  "Rio de Janeiro",
+  "Cape Town",
+  "Istanbul",
+  "Seoul",
+  "Amsterdam",
+  "Stockholm",
+  "Vienna",
+  "Prague",
+  "Athens",
+  "Dublin",
+  "Hong Kong",
+  "Shanghai",
+  "Jakarta",
+  "Kuala Lumpur",
+  "Manila",
+  "Warsaw",
+  "Budapest",
+  "Lagos",
+  "Nairobi",
+  "Auckland",
+  "Vancouver",
+  "Chicago",
+  "Boston",
+  "Dallas",
+  "Miami",
+  "San Francisco",
+  "Seattle",
+  "Barcelona",
+  "Lisbon",
+  "Copenhagen",
+  "Oslo"
+];
+
+export const filterCities = (query) => {
+  const lowercaseQuery = query.toLowerCase();
+  
+  return popularCities.filter(city => 
+    city.toLowerCase().includes(lowercaseQuery)
+  ).slice(0, 5); // Return at most 5 suggestions
+};
