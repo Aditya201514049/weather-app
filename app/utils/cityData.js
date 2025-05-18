@@ -1,5 +1,84 @@
 export const popularCities = [
+  // Bangladesh cities
   "Dhaka",
+  "Chittagong",
+  "Khulna",
+  "Rajshahi",
+  "Sylhet",
+  "Barisal",
+  "Rangpur",
+  "Comilla",
+  "Narayanganj",
+  "Mymensingh",
+  "Jessore",
+  "Bogra",
+  "Dinajpur",
+  "Cox's Bazar",
+  "Tangail",
+  
+  // Indian cities
+  "Mumbai",
+  "Delhi",
+  "Bangalore",
+  "Hyderabad",
+  "Chennai",
+  "Kolkata",
+  "Pune",
+  "Ahmedabad",
+  "Jaipur",
+  "Lucknow",
+  "Kanpur",
+  "Nagpur",
+  "Indore",
+  "Thane",
+  "Bhopal",
+  "Visakhapatnam",
+  "Patna",
+  "Vadodara",
+  "Ghaziabad",
+  "Agra",
+  
+  // Pakistani cities
+  "Karachi",
+  "Lahore",
+  "Faisalabad",
+  "Rawalpindi",
+  "Multan",
+  "Hyderabad",
+  "Peshawar",
+  "Islamabad",
+  "Quetta",
+  "Sargodha",
+  
+  // Nepal cities
+  "Kathmandu",
+  "Pokhara",
+  "Lalitpur",
+  "Bhaktapur",
+  "Biratnagar",
+  
+  // Sri Lanka cities
+  "Colombo",
+  "Kandy",
+  "Galle",
+  "Jaffna",
+  "Negombo",
+  
+  // Bhutan cities
+  "Thimphu",
+  "Paro",
+  "Punakha",
+  
+  // Maldives cities
+  "Male",
+  
+  // Afghanistan cities
+  "Kabul",
+  "Kandahar",
+  "Herat",
+  "Mazar-i-Sharif",
+  
+  // International cities
   "London",
   "New York",
   "Tokyo",
