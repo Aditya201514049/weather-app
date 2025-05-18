@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
 import WeatherBackground from './components/WeatherBackground';
 import ErrorDisplay from './components/ErrorDisplay';
+import UnitToggle from './components/UnitToggle';
 import { fetchWeatherData } from './utils/weatherApi';
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [city, setCity] = useState('Dhaka'); // Default city
+  const [unit, setUnit] = useState('metric'); // Default to metric (Celsius)
 
   const handleSearch = async (searchCity) => {
     setCity(searchCity);
@@ -20,13 +22,35 @@ export default function Home() {
     setError(null);
 
     try {
-      const data = await fetchWeatherData(searchCity);
+      const data = await fetchWeatherData(searchCity, unit);
       setWeatherData(data);
     } catch (err) {
       console.error('Error fetching weather:', err);
       setError(`We couldn't find "${searchCity}" in our database.`);
     } finally {
       setLoading(false);
+    }
+  };
+  
+  // Handle unit toggle between metric (°C) and imperial (°F)
+  const handleUnitToggle = (newUnit) => {
+    if (newUnit !== unit) {
+      setUnit(newUnit);
+      // Refetch weather data with the new unit if we have a city
+      if (city) {
+        setLoading(true);
+        fetchWeatherData(city, newUnit)
+          .then(data => {
+            setWeatherData(data);
+            setError(null);
+          })
+          .catch(err => {
+            console.error('Error fetching weather with new unit:', err);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+      }
     }
   };
 
@@ -52,7 +76,12 @@ export default function Home() {
       </header>
       
       <main className="w-full max-w-4xl mx-auto flex flex-col items-center gap-6 z-10">
-        <SearchBar onSearch={handleSearch} />
+        <div className="w-full max-w-md flex justify-between items-center gap-4">
+          <div className="flex-grow">
+            <SearchBar onSearch={handleSearch} />
+          </div>
+          <UnitToggle unit={unit} onToggle={handleUnitToggle} />
+        </div>
         
         {loading ? (
           <div className="flex justify-center items-center py-8">
@@ -61,7 +90,7 @@ export default function Home() {
         ) : error ? (
           <ErrorDisplay message={error} />
         ) : weatherData ? (
-          <WeatherCard weatherData={weatherData} />
+          <WeatherCard weatherData={weatherData} unit={unit} />
         ) : null}
       </main>
       

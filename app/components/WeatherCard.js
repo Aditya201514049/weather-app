@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { getWeatherIcon } from '../utils/weatherApi';
+import { getWeatherIcon, formatTemperature, formatWindSpeed } from '../utils/weatherApi';
 
-export default function WeatherCard({ weatherData }) {
+export default function WeatherCard({ weatherData, unit = 'metric' }) {
   if (!weatherData) return <div>Loading...</div>;
 
   const { name, main, weather, wind, sys } = weatherData;
@@ -41,8 +41,8 @@ export default function WeatherCard({ weatherData }) {
       
       <div className="grid grid-cols-2 gap-4">
         <div className="text-center">
-          <p className="text-5xl font-bold text-gray-800">{Math.round(main.temp)}°C</p>
-          <p className="text-gray-600">Feels like: {Math.round(main.feels_like)}°C</p>
+          <p className="text-5xl font-bold text-gray-800">{formatTemperature(main.temp, unit)}</p>
+          <p className="text-gray-600">Feels like: {formatTemperature(main.feels_like, unit)}</p>
         </div>
         <div className="space-y-2">
           <div className="flex justify-between">
@@ -51,7 +51,7 @@ export default function WeatherCard({ weatherData }) {
           </div>
           <div className="flex justify-between">
             <span className="text-gray-600">Wind:</span>
-            <span className="font-medium">{wind.speed} m/s</span>
+            <span className="font-medium">{formatWindSpeed(wind.speed, unit)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-gray-600">Pressure:</span>
@@ -65,11 +65,11 @@ export default function WeatherCard({ weatherData }) {
       <div className="flex justify-between text-sm text-gray-600">
         <div className="flex flex-col items-center">
           <span>Min</span>
-          <span className="font-medium">{Math.round(main.temp_min)}°C</span>
+          <span className="font-medium">{formatTemperature(main.temp_min, unit)}</span>
         </div>
         <div className="flex flex-col items-center">
           <span>Max</span>
-          <span className="font-medium">{Math.round(main.temp_max)}°C</span>
+          <span className="font-medium">{formatTemperature(main.temp_max, unit)}</span>
         </div>
         <div className="flex flex-col items-center">
           <span>Sunrise</span>
