@@ -24,7 +24,7 @@ export default function Home() {
       setWeatherData(data);
     } catch (err) {
       console.error('Error fetching weather:', err);
-      setError(`Could not find weather data for "${searchCity}". Please check the city name and try again.`);
+      setError(`We couldn't find "${searchCity}" in our database.`);
     } finally {
       setLoading(false);
     }
