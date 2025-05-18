@@ -110,6 +110,23 @@ export default function SearchBar({ onSearch }) {
             className="w-full px-4 py-3 pr-12 rounded-full border-2 border-gray-200 focus:border-blue-500 focus:outline-none placeholder-gray-400 shadow-sm text-white bg-black/40 backdrop-blur-sm"
             autoComplete="off"
           />
+          {city.length > 0 && (
+            <button
+              type="button"
+              onClick={() => {
+                setCity('');
+                setSuggestions([]);
+                setShowSuggestions(false);
+                setShowHistory(false);
+              }}
+              className="absolute right-12 text-white/60 hover:text-white p-2 transition-colors"
+              aria-label="Clear search"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
           <button 
             type="submit"
             className="absolute right-2 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full transition-colors"
