@@ -95,7 +95,7 @@ export default function Home() {
       </main>
       
       <footer className="mt-auto pt-8 text-center text-white/80 text-sm z-10">
-        <p>© {new Date().getFullYear()} Weather App | Powered by OpenWeatherMap</p>
+        <p>© {new Date().getFullYear()} Weather App | Powered by Aditya Singha</p>
       </footer>
     </div>
   );
